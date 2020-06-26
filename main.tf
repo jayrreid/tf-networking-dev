@@ -27,7 +27,7 @@ resource "aws_subnet" "public_subnet" {
   tags = "${
     map(
     "Name", "Public_subnet_data.aws_availability_zones.available.names[count.index]",
-    "kubernetes.io/cluster/${var.cluster_name}" , "owned",
+    "kubernetes.io/cluster/var.cluster_name" , "owned",
     "kubernetes.io/role/elb" , "1",
     )
   }"
@@ -43,7 +43,7 @@ resource "aws_subnet" "private_subnet" {
   tags = "${
     map(
     "Name", "Private_subnet_data.aws_availability_zones.available.names[count.index]",
-    "kubernetes.io/cluster/${var.cluster_name}" , "owned",
+    "kubernetes.io/cluster/var.cluster_name" , "owned",
     "kubernetes.io/role/internal-elb" , "1",
     )
   }"
