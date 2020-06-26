@@ -112,7 +112,7 @@ resource "aws_route_table_association" "public" {
 
 #Internet Gatway
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.this.id}
+  vpc_id = aws_vpc.this.id
 
   tags = {
     Name = "Internet-Gateway"
