@@ -31,10 +31,10 @@ resource "aws_subnet" "public_subnet" {
 
 #Private Subnet
 resource "aws_subnet" "private_subnet" {
-  count             = "${length(var.private_subnet_cidr)}"
-  vpc_id            = "${aws_vpc.this.id}"
-  cidr_block        = "${var.private_subnet_cidr[count.index]}"
-  availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
+  count             = "length(var.private_subnet_cidr)"
+  vpc_id            = "aws_vpc.this.id"
+  cidr_block        = "var.private_subnet_cidr[count.index]"
+  availability_zone = "data.aws_availability_zones.available.names[count.index]"
 
   tags = "${
     map(
@@ -47,10 +47,10 @@ resource "aws_subnet" "private_subnet" {
 
 #EKS Kubernetes Subnet
 resource "aws_subnet" "master_subnet" {
-  count             = "${length(var.master_subnet_cidr)}"
-  vpc_id            = "${aws_vpc.this.id}"
-  cidr_block        = "${element(var.master_subnet_cidr, count.index)}"
-  availability_zone = "${element(data.aws_availability_zones.available.names, count.index)}"
+  count             = "length(var.master_subnet_cidr)"
+  vpc_id            = "aws_vpc.this.id"
+  cidr_block        = "element(var.master_subnet_cidr, count.index)"
+  availability_zone = "element(data.aws_availability_zones.available.names, count.index)"
 
   tags = {
     Name = "Master_${element(data.aws_availability_zones.available.names, count.index)}"
