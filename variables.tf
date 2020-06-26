@@ -1,4 +1,9 @@
 #VPC
+
+variable "region" {
+  default = "us-west-2"
+}
+
 variable "create_vpc" {
   default = " "
 }
