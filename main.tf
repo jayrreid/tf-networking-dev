@@ -26,7 +26,7 @@ resource "aws_subnet" "public_subnet" {
 
   tags = "${
     map(
-    "Name", "Public_subnet_${data.aws_availability_zones.available.names[count.index]}",
+    "Name", "Public_subnet_data.aws_availability_zones.available.names[count.index]",
     "kubernetes.io/cluster/${var.cluster_name}" , "owned",
     "kubernetes.io/role/elb" , "1",
     )
@@ -42,7 +42,7 @@ resource "aws_subnet" "private_subnet" {
 
   tags = "${
     map(
-    "Name", "Private_subnet_${data.aws_availability_zones.available.names[count.index]}",
+    "Name", "Private_subnet_data.aws_availability_zones.available.names[count.index]",
     "kubernetes.io/cluster/${var.cluster_name}" , "owned",
     "kubernetes.io/role/internal-elb" , "1",
     )
@@ -69,7 +69,7 @@ resource "aws_subnet" "worker_subnet" {
   availability_zone = element(data.aws_availability_zones.available.names, count.index)
 
   tags = {
-    Name = "Worker_${element(data.aws_availability_zones.available.names, count.index)}"
+    Name = "Worker_element(data.aws_availability_zones.available.names, count.index)"
   }
 }
 
