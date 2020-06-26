@@ -107,7 +107,7 @@ resource "aws_route_table_association" "master" {
 resource "aws_route_table_association" "public" {
   count          = length(var.public_subnet_cidr)
   subnet_id      = aws_subnet.public_subnet.*.id[count.index]
-  route_table_id = aws_route_table.rt_public.id}
+  route_table_id = aws_route_table.rt_public.id
 }
 
 #Internet Gatway
